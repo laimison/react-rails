@@ -1,3 +1,5 @@
+# require 'json'
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -44,4 +46,25 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+  # Extra code for mailer
+  if File.exists?('secret.json')
+    secret_file = File.read('secret.json')
+    secret_content = JSON.parse(secret_file)
+    secret_email = secret_content['mail']['email']
+    secret_password = secret_content['mail']['password']
+
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      address:              'smtp.gmail.com',
+      port:                 587,
+      domain:               'gmail.com',
+      user_name:            secret_email.strip,
+      password:             secret_password.strip,
+      authentication:       :login,
+      enable_starttls_auto: true
+    }
+  else
+    puts 'Error: not able to find secret.json in your backend root directory. Please create this file - { "mail": { "email": "user@example.com", "password": "your_password" } }'
+  end
 end

@@ -18,3 +18,9 @@
 !/tmp/.keep
 
 .byebug_history
+
+# misc
+.DS_Store
+
+# This must be ignored
+secret.json
