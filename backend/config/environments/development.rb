@@ -1,5 +1,3 @@
-# require 'json'
-
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -47,24 +45,25 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  # Extra code for mailer
-  if File.exists?('secret.json')
-    secret_file = File.read('secret.json')
-    secret_content = JSON.parse(secret_file)
-    secret_email = secret_content['mail']['email']
-    secret_password = secret_content['mail']['password']
-
+  # ---- Extra code for mailer
+  email_address = ENV['EMAIL_ADDRESS']
+  email_password = ENV['EMAIL_PASSWORD']
+  
+  if email_address.present? && email_password.present?
+    email_password_decoded = Base64.decode64(email_password)
+    
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.smtp_settings = {
       address:              'smtp.gmail.com',
       port:                 587,
       domain:               'gmail.com',
-      user_name:            secret_email.strip,
-      password:             secret_password.strip,
+      user_name:            email_address.strip,
+      password:             email_password_decoded,
       authentication:       :login,
       enable_starttls_auto: true
     }
   else
-    puts 'Error: not able to find secret.json in your backend root directory. Please create this file - { "mail": { "email": "user@example.com", "password": "your_password" } }'
+    puts "Warning: You have not specified 'export EMAIL_ADDRESS' and 'export EMAIL_PASSWORD' environment variables for backend mailer so emails will not work"
   end
+  # ---- Extra code ends.
 end

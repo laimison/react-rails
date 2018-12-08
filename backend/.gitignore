@@ -21,6 +21,3 @@
 
 # misc
 .DS_Store
-
-# This must be ignored
-secret.json
