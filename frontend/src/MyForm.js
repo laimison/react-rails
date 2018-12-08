@@ -8,7 +8,7 @@ import qs from 'qs';
 const MyForm = () => (
   <div className="app">
 
-    <h1>Email Form Using Formik</h1>
+    <h1>Email Form</h1>
 
     <Formik
       initialValues={{ email: "", message: "" }}
@@ -47,7 +47,7 @@ const MyForm = () => (
         return (
           <form onSubmit={handleSubmit}>
             <label htmlFor="email" style={{ display: "block" }}>
-              Email
+              Contact Us
             </label>
             <input
               id="email"
