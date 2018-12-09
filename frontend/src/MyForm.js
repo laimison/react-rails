@@ -106,7 +106,7 @@ const MyForm = () => (
             */}
 
             <button type="submit" onClick={submit_button_clicked} disabled={isSubmitting}>
-              Submit
+              Send
             </button>
 
           </form>
