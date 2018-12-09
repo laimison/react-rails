@@ -21,10 +21,14 @@ module Api::V1
       output = { example_post: params }
       logger.info("I have received POST: #{output}")
 
-      if params['email'].present? && params['message'].present?
-        ActionMailer::Base.mail( from: "test@example.com", to: params['email'], subject: "Backend Email", body: params['message'] ).deliver_now
+      if params['email'].present? && params['message'].present? && ENV['EMAIL_ADDRESS'].present?
+        message = "#{params['message']}\n\nSent by #{params['email']}"
+        email_from = ENV['EMAIL_ADDRESS'].to_s # it was "test@example.com"
+        email_to = params['email'].to_s
+        
+        ActionMailer::Base.mail( from: email_from, to: email_to, subject: "Backend Email", body: message ).deliver_now
       end
-      
+
       render json: output
     end
 
