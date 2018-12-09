@@ -6,14 +6,16 @@
   "comment_formik_2018_12": "Formik is a small library that helps you with the 3 most annoying parts: 1) Getting values in and out of form state 2) Validation and error messages 3) Handling form submission",
   "comment_yup_2018_12": "Yup is a JavaScript object schema validator and object parser. For instance, it's useful for email validation, etc.",
   "comment_qs_2018_12": "A querystring (qs) parsing and stringifying library with some added security. It's useful in GET, POST and other queries when posting json file.",
+  "comment_react-notify-toast_2018_12": "Notifications for React",
   "dependencies": {
-    "react": "^16.6.3",
-    "react-dom": "^16.6.3",
-    "react-scripts": "2.1.1",
     "axios": "^0.18.0",
     "formik": "1.2.0",
-    "yup": "0.26.3",
-    "qs": "^6.6.0"
+    "qs": "^6.6.0",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "react-notify-toast": "^0.5.0",
+    "react-scripts": "2.1.1",
+    "yup": "0.26.3"
   },
   "scripts": {
     "start": "react-scripts start",

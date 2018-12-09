@@ -3,10 +3,12 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import qs from 'qs';
+import Notifications, {notify} from 'react-notify-toast';
 
 // Inspired by https://medium.com/dailyjs/why-build-your-forms-with-redux-form-bcacbedc9e8 about forms, also by https://blog.stvmlbrn.com/2017/04/07/submitting-form-data-with-react.html about the states
 const MyForm = () => (
   <div className="app">
+    <Notifications />
 
     <h1>Email Form</h1>
 
@@ -15,11 +17,20 @@ const MyForm = () => (
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
           // Solution to use qs.stringify for posting json - https://github.com/axios/axios/issues/1440 by JustinBeckwith - without this extra unwanted characters of \ or \n added
-          axios.post("http://localhost:5000/v1/examples", qs.stringify(values)).then(result => {
-
+          axios.post("http://localhost:5000/v1/examples", qs.stringify(values)).then(response => {
+            if (response.status === 200) {
+              // .
+            } else {
+              // throw error and go to catch block
+              throw new Error("Error");
+            }
+          }).catch(error => {
+            //when throw "Error" is executed it runs the catch block code
+            console.log(error)
           });
 
-          alert('Confirm this, so email will be sent to us. Thank you!');
+          // Improvement for the future would be to replace alert to notification or another user friendly solution
+          // alert('Confirm this, so email will be sent to us. Thank you!');
 
           setSubmitting(false);
         }, 500);
@@ -32,17 +43,28 @@ const MyForm = () => (
     >
 
       {props => {
+        // Adding function inside const method - https://stackoverflow.com/questions/40561199/es6-how-to-define-functions-inside-a-const
+
+        // You can declare another arrow function if you want:
+        // const submit_button_clicked = () => alert('Confirm this, so email will be sent to us. Thank you!');
+        const submit_button_clicked = () => notify.show('The email has been sent!', "custom", 3000, { background: 'rgba(57, 225, 175, 0.7)', opacity: 0.8, text: "#FFFFFF" });
+
+        // Or a standard function
+        // function bar() { console.log('standard'); }
+
         const {
           values,
           touched,
           errors,
-          dirty,
           isSubmitting,
           handleChange,
           handleBlur,
-          handleSubmit,
-          handleReset
+          handleSubmit
         } = props;
+
+        // Removed consts:
+        // dirty,
+        // handleReset
 
         return (
           <form onSubmit={handleSubmit}>
@@ -85,8 +107,8 @@ const MyForm = () => (
               Reset
             </button>
             */}
-            
-            <button type="submit" disabled={isSubmitting}>
+
+            <button type="submit" onClick={submit_button_clicked} disabled={isSubmitting}>
               Submit
             </button>
 
