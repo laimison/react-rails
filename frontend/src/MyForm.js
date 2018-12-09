@@ -63,14 +63,13 @@ const MyForm = () => (
               }
             />
 
-            <input
-              id="message"
+            <textarea id="message"
               placeholder="Enter your message"
               type="text"
               value={values.message}
               onChange={handleChange}
-              onBlur={handleBlur}
-            />
+              onBlur={handleBlur}>
+            </textarea>
 
             {errors.email && touched.email && (
               <div className="input-feedback">{errors.email}</div>

@@ -37,6 +37,19 @@ input {
   border: 1px solid #ccc;
 }
 
+textarea#message {
+  padding: .5rem;
+  font-size: 16px;
+  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
+  min-height: 50px;
+  height: 100px;
+  display: block;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
 input:focus {
   border-color: #007eff;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
@@ -65,7 +78,7 @@ button {
   padding: 12px 20px;
   border-style: none;
   border-radius: 5px;
-  background-color: #08c;
+  background-color: #39E1AF;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
   font-size: 17px;
   font-weight: 500;
