@@ -75,6 +75,7 @@ const MyForm = () => (
               <div className="input-feedback">{errors.email}</div>
             )}
 
+            {/*
             <button
               type="button"
               className="outline"
@@ -83,6 +84,8 @@ const MyForm = () => (
             >
               Reset
             </button>
+            */}
+            
             <button type="submit" disabled={isSubmitting}>
               Submit
             </button>
