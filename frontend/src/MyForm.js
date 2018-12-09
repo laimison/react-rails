@@ -47,7 +47,7 @@ const MyForm = () => (
 
         // You can declare another arrow function if you want:
         // const submit_button_clicked = () => alert('Confirm this, so email will be sent to us. Thank you!');
-        const submit_button_clicked = () => notify.show('The email has been sent!', "custom", 3000, { background: 'rgba(57, 225, 175, 0.7)', opacity: 0.8, text: "#FFFFFF" });
+        const submit_button_clicked = () => notify.show('The email has been sent!', "custom", 4000, { background: 'rgba(57, 225, 175, 0.85)', opacity: 0.8, text: "#FFFFFF" });
 
         // Or a standard function
         // function bar() { console.log('standard'); }
