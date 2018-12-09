@@ -29,9 +29,6 @@ const MyForm = () => (
             console.log(error)
           });
 
-          // Improvement for the future would be to replace alert to notification or another user friendly solution
-          // alert('Confirm this, so email will be sent to us. Thank you!');
-
           setSubmitting(false);
         }, 500);
       }}
@@ -46,7 +43,7 @@ const MyForm = () => (
         // Adding function inside const method - https://stackoverflow.com/questions/40561199/es6-how-to-define-functions-inside-a-const
 
         // You can declare another arrow function if you want:
-        // const submit_button_clicked = () => alert('Confirm this, so email will be sent to us. Thank you!');
+        // The improvement is to trigger notification based on axios post response
         const submit_button_clicked = () => notify.show('The email has been sent!', "custom", 4000, { background: 'rgba(57, 225, 175, 0.85)', opacity: 0.8, text: "#FFFFFF" });
 
         // Or a standard function
