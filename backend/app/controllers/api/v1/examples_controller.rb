@@ -28,7 +28,7 @@ module Api::V1
 
         ActionMailer::Base.mail( from: email_from, to: email_to, subject: "Backend Email", body: message ).deliver_now
       else
-        logger.warning("Email was not sent. This is possible issue with the app. ENV['EMAIL_ADDRESS'] is #{ENV['EMAIL_ADDRESS']}")
+        logger.warn("Email was not sent. This is possible issue with the app. ENV['EMAIL_ADDRESS'] is #{ENV['EMAIL_ADDRESS']}")
       end
 
       render json: output
