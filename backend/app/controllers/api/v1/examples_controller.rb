@@ -23,7 +23,7 @@ module Api::V1
 
       if params['email'].present? && params['message'].present? && ENV['EMAIL_ADDRESS'].present?
         message = "#{params['message']}\n\nSent by #{params['email']}"
-        email_from = "Mailer <#{ENV['EMAIL_ADDRESS']>}"
+        email_from = "Mailer <#{ENV['EMAIL_ADDRESS']}>"
         email_to = params['email'].to_s
 
         ActionMailer::Base.mail( from: email_from, to: email_to, subject: "Backend Email", body: message ).deliver_now
