@@ -1,6 +1,11 @@
+// react-slick
 import React, { Component } from "react";
 import Slider from "react-slick";
-import "./index.css";
+//import "./index.css";
+
+// react-image-gallery
+import "../node_modules/react-image-gallery/styles/css/image-gallery.css";
+import ImageGallery from 'react-image-gallery';
 
 export default class App extends Component {
   render() {
@@ -11,7 +16,36 @@ export default class App extends Component {
       slidesToShow: 3,
       slidesToScroll: 1
     };
+    
+    const images = [
+      {
+        original: 'http://localhost:5000/1000x600.jpeg',
+        thumbnail: 'http://localhost:5000/250x150.jpeg',
+      },
+      {
+        original: 'http://localhost:5000/1000x600.jpeg',
+        thumbnail: 'http://localhost:5000/250x150.jpeg',
+      },
+      {
+        original: 'http://localhost:5000/1000x600.jpeg',
+        thumbnail: 'http://localhost:5000/250x150.jpeg',
+      },
+      {
+        original: 'http://localhost:5000/1000x600.jpeg',
+        thumbnail: 'http://localhost:5000/250x150.jpeg',
+      },
+      {
+        original: 'http://localhost:5000/1000x600.jpeg',
+        thumbnail: 'http://localhost:5000/250x150.jpeg',
+      },
+      {
+        original: 'http://localhost:5000/1000x600.jpeg',
+        thumbnail: 'http://localhost:5000/250x150.jpeg',
+      }
+    ]
     return (
+      <div>
+      {/*
       <div className="container">
          <Slider {...settings}>
            <div>
@@ -35,6 +69,9 @@ export default class App extends Component {
              </a>
            </div>
          </Slider>
+       </div>
+       */}
+         <ImageGallery items={images} />
        </div>
     );
   }
