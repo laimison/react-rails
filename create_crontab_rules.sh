@@ -81,7 +81,7 @@ then
   exit 1
 fi
 
-crontab -l | grep -Eq "${app_dir}.*flock.*rails" || (crontab -l 2>/dev/null; echo "*/1 * * * * /usr/bin/su ${app_user} /bin/bash -l -c \"source \\$HOME/.bash_profile && source /etc/profile.d/rvm.sh && rvm use ruby-2.4.5 && cd ${app_dir}/backend && /usr/bin/flock -n /tmp/api.${sub_domain_full}.lockfile /usr/local/rvm/gems/ruby-2.4.5/bin/rails s -p ${rails_port} -b 0.0.0.0\"") | crontab -
+crontab -l | grep -Eq "${app_dir}.*flock.*rails" || (crontab -l 2>/dev/null; echo "*/1 * * * * /usr/bin/su ${app_user} /bin/bash -l -c \"source \\\$HOME/.bash_profile && source /etc/profile.d/rvm.sh && rvm use ruby-2.4.5 && cd ${app_dir}/backend && /usr/bin/flock -n /tmp/api.${sub_domain_full}.lockfile /usr/local/rvm/gems/ruby-2.4.5/bin/rails s -p ${rails_port} -b 0.0.0.0\"") | crontab -
 
 if ! echo $? | grep -q ^0$
 then
