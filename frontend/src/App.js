@@ -7,15 +7,15 @@ export default class App extends Component {
   state = {
     open: false,
   };
- 
+
   onOpenModal = () => {
     this.setState({ open: true });
   };
- 
+
   onCloseModal = () => {
     this.setState({ open: false });
   };
-   
+
   render() {
     const { open } = this.state;
 
@@ -48,12 +48,12 @@ export default class App extends Component {
     return (
       <div>
         <button onClick={this.onOpenModal}>Open Second Photo</button>
-        <Modal open={open} onClose={this.onCloseModal} center>
+        <Modal open={open} onClose={this.onCloseModal}>
           {/*
           <h2>Simple centered modal</h2>
-          
+
           Inspired by https://stackoverflow.com/questions/51263480/react-current-image-in-image-gallery
-          
+
           <ImageGallery
             key={this.state.number}
             items={this.state.data.images}
@@ -70,7 +70,7 @@ export default class App extends Component {
           <ImageGallery startIndex={1} items={images} />
         </Modal>
         {/*
-        
+
         */}
       </div>
     );
