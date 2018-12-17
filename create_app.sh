@@ -106,4 +106,25 @@ fi
 # Change Rails port
 sed -ie "s|3000 |5000 |g" config/puma.rb
 
+# Script to run React & Rails on the workstation
+cd "${app_dir}"
+echo '#!/bin/bash
+
+cd backend && rails s &
+rails_pid=$!
+
+# The trap statement tells the script to run received_signal() on signals 1, 2 (CTRL+C), 3 or 6.
+trap received_signal 1 2 3 6
+
+received_signal()
+{
+  echo "Caught Signal ... Shutting down ... Please wait for 4 seconds."
+  kill $rails_pid; sleep 3; kill -5 $pid 2>/dev/null
+  echo "Exiting."
+  exit 1
+}
+
+cd frontend && yarn start || npm start' > up.sh
+chmod +x up.sh
+
 echo "Your app created at ${app_dir}"
