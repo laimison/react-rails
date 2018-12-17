@@ -103,4 +103,7 @@ then
   exit 1
 fi
 
+# Change Rails port
+sed -ie "s|3000 |5000 |g" config/puma.rb
+
 echo "Your app created at ${app_dir}"
