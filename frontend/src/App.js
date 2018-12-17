@@ -1,25 +1,38 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "../node_modules/react-image-gallery/styles/css/image-gallery.css";
+import ImageGallery from 'react-image-gallery';
 
 class App extends Component {
   render() {
+    const images = [
+      {
+        original: 'http://localhost:5000/1000x600.jpeg',
+        thumbnail: 'http://localhost:5000/250x150.jpeg',
+      },
+      {
+        original: 'http://localhost:5000/1000x600.jpeg',
+        thumbnail: 'http://localhost:5000/250x150.jpeg',
+      },
+      {
+        original: 'http://localhost:5000/1000x600.jpeg',
+        thumbnail: 'http://localhost:5000/250x150.jpeg',
+      },
+      {
+        original: 'http://localhost:5000/1000x600.jpeg',
+        thumbnail: 'http://localhost:5000/250x150.jpeg',
+      },
+      {
+        original: 'http://localhost:5000/1000x600.jpeg',
+        thumbnail: 'http://localhost:5000/250x150.jpeg',
+      },
+      {
+        original: 'http://localhost:5000/1000x600.jpeg',
+        thumbnail: 'http://localhost:5000/250x150.jpeg',
+      }
+    ]
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div>
+        <ImageGallery items={images} />
       </div>
     );
   }
