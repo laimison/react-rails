@@ -48,7 +48,9 @@ export default class App extends Component {
     ]
     return (
       <div>
+        {/*
         <button onClick={this.onOpenModal}>Open Second Photo</button>
+        */}
         <Modal open={open} onClose={this.onCloseModal}>
           {/*
           <h2>Simple centered modal</h2>
