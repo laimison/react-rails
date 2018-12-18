@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import "../node_modules/react-image-gallery/styles/css/image-gallery.css";
 import ImageGallery from 'react-image-gallery';
 import Modal from 'react-responsive-modal';
-import './modal.css';
+// import './modal.css';
 
 export default class App extends Component {
   state = {
@@ -68,11 +68,12 @@ export default class App extends Component {
             renderItem={this._renderImages}
           />
           */}
-          <ImageGallery startIndex={1} items={images} />
+
         </Modal>
         {/*
 
         */}
+        <ImageGallery startIndex={1} items={images} />
       </div>
     );
   }
