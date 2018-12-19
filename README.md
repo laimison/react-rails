@@ -180,7 +180,7 @@ This is a simple email form based on React and Ruby on Rails.
 
 * File - add project folder - Document/react-rails
 
-* You can try to edit some text and check [http://localhost:5000](http://localhost:5000)
+* You can try to edit some text and check [http://localhost:3000](http://localhost:3000)
 
 #### Commit Your Changes to Git
 
