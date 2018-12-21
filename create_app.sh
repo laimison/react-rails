@@ -131,7 +131,7 @@ chmod +x up.sh
 echo '#!/bin/bash
 
 yarn start || npm start' > frontend/start.sh
-chmod +x start.sh
+chmod +x frontend/start.sh
 
 # Script to start Rails
 echo '#!/bin/bash
@@ -143,5 +143,6 @@ then
 fi
 
 rails s' > backend/start.sh
+chmod +x backend/start.sh
 
 echo "Your app created at ${app_dir}"
