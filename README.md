@@ -130,13 +130,15 @@ This is a simple email form based on React and Ruby on Rails.
 
 * Add:
 
-* `export EMAIL_ADDRESS=address_here`
+* `export EMAIL_ADDRESS=gmail_address_here`
 
 * `export EMAIL_PASSWORD=base64_encoded_password_here`
 
 * Save
 
-#### Clone Git project and Start React
+#### Clone Git project and Start Rails
+
+* You need github account for this
 
 * Reopen Git Bash
 
@@ -146,29 +148,13 @@ This is a simple email form based on React and Ruby on Rails.
 
 * `git clone https://github.com/laimison/react-rails.git`
 
-* `cd react-rails`
+* `cd react-rails/backend`
 
 * `git checkout part1`
 
 * `ls -lart`
 
-* `cd frontend`
-
-* `yarn install`
-
-* `./start.sh` - allow firewall if asked
-
-* Check [http://localhost:3000](http://localhost:3000)
-
-#### Install and Start Rails
-
-* Open another window of Git Bash
-
 * `gem install rails -v 5.1.6`
-
-* `cd`
-
-* `cd Documents/react-rails/backend`
 
 * `bundle`
 
@@ -176,13 +162,53 @@ This is a simple email form based on React and Ruby on Rails.
 
 * Check [http://localhost:5000](http://localhost:5000)
 
-#### Open Project in Atom
+#### Install and Start React
+
+* Open another window of Git Bash
+
+* `cd`
+
+* `cd Documents/react-rails/frontend`
+
+* `yarn install`
+
+* `./start.sh` - allow firewall if asked
+
+* Check [http://localhost:3000](http://localhost:3000)
+
+* You can try to send an email to you and see if it worked (check Rails output in your Git Bash window as well) :)
+
+#### Stop everything and reset any changes to git
+
+When did `yarn install` and `bundle`, they created some files, you want to reset them
+
+* CTRL+C in both windows
+
+* `cd`
+
+* `cd Documents/react-rails`
+
+* `git reset --hard origin/part1`
+
+* `git fetch --all`
+
+#### Open project in Atom
 
 * File - add project folder - Document/react-rails
 
-* You can try to edit some text and check [http://localhost:3000](http://localhost:3000)
+OR
+
+* `cd; cd Documents/react-rails; atom .` in Git Bash
 
 #### Commit Your Changes to Git
+
+If you want to write some changes to this repository, you should be added as collaborator for this project
+
+Option 1) ideally ask me to give you access
+
+Option 2) fork this repo
+
+`partX` - can be any part that you want to change
 
 * Open another window of Git Bash
 
@@ -190,10 +216,27 @@ This is a simple email form based on React and Ruby on Rails.
 
 * `cd Documents/react-rails`
 
+* `git config user.name "Your Name or nickname"` - this name will be visible to the world.. surname is not required..
+
+* `git config user.email "your_github_email_address@example.com"` - it's not visible to anyone
+
+* `git checkout partX`
+
+* Make sure that you have started frontend and probably backend with `./start.sh`
+
+* If not able to start you may need to install packages `yarn install` from frontend directory and `bundle` from backend directory
+
+* Now you can try to edit some text and check [http://localhost:3000](http://localhost:3000)
+
+* So if you are happy with local changes, push them to git!
+
 * `git status`
 
 * `git add --all`
 
-* `git commit -m 'first commit'`
+* `git commit -m 'add some message what you have changed'` - this is visible to the world
 
-* `git push origin part1` - it will ask for your Github username and password
+* `git push origin partX` - it will ask for your Github username and password
+
+
+
