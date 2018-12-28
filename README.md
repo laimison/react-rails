@@ -28,6 +28,8 @@ This is a simple email form based on React and Ruby on Rails.
 
 ### Mac OS
 
+This tutorial assums that you do not have any knowledge so if you are familiar with these tools, you can skip majority of parts
+
 * Install Node [https://nodejs.org/en/download](https://nodejs.org/en/download)
 
 * In Terminal `npm install -g npx` or `sudo npm install -g npx` if you don't have npx and `npx --version` is lower than version 10
@@ -71,6 +73,8 @@ This is a simple email form based on React and Ruby on Rails.
 * Optional: if you have issues with CTRL+C when exiting programs, downgrade rvm `rvm get 1.29.3`
 
 ### Windows
+
+This tutorial assums that you do not have any knowledge so if you are familiar with these tools, you can skip majority of parts
 
 #### Install any editor, e.g. Atom [https://atom.io](https://atom.io)
 
@@ -238,5 +242,17 @@ Option 2) fork this repo
 
 * `git push origin partX` - it will ask for your Github username and password
 
+#### Git Commit in One Line
 
+Add this function to your user's profile
+
+``grep -qE 'git_push.*().*{' ~/.bash_profile || echo 'git_push () { git status && echo && echo $* | grep [a-zA-Z] && echo "Pushing as `git config user.name` in 5 seconds (CTRL+C to decline) ..." && sleep 5 && git config --global push.default current && git add --all && git commit -m "$*" && git push ; }' >> ~/.bash_profile``
+
+Reopen your terminal and try it
+
+You should be in react-rails directory
+
+`git_push your commit message here`
+
+You can replace "your commit message here" with any message, but special characters are not recommended unless this is comma or point ,.
 
