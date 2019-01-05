@@ -6,7 +6,7 @@ import "./index.css";
 export default class App extends Component {
   render() {
     var settings = {
-      dots: true,
+      dots: false,
       infinite: false,
       speed: 500,
       slidesToShow: 4,
@@ -19,7 +19,7 @@ export default class App extends Component {
             slidesToShow: 3,
             slidesToScroll: 3,
             infinite: true,
-            dots: true
+            dots: false
           }
         },
         {
@@ -27,14 +27,16 @@ export default class App extends Component {
           settings: {
             slidesToShow: 2,
             slidesToScroll: 2,
-            initialSlide: 2
+            initialSlide: 2,
+            dots: false
           }
         },
         {
           breakpoint: 500,
           settings: {
             slidesToShow: 1,
-            slidesToScroll: 1
+            slidesToScroll: 1,
+            dots: false
           }
         }
       ]
@@ -43,28 +45,28 @@ export default class App extends Component {
     return (
       <div>
         <div className="container">
-           <Slider {...settings}>
-             <div>
-               <a href="https://www.google.com/search?q=1&tbm=isch">
-                 <img src="http://localhost:5000/400x200.jpeg" />
-               </a>
-             </div>
-             <div>
-               <a href="https://www.google.com/search?q=2&tbm=isch">
-                 <img src="http://localhost:5000/400x200.jpeg" />
-               </a>
-             </div>
-             <div>
-               <a href="https://www.google.com/search?q=3&tbm=isch">
-                 <img src="http://localhost:5000/400x200.jpeg" />
-               </a>
-             </div>
-             <div>
-               <a href="https://www.google.com/search?q=4&tbm=isch">
-                 <img src="http://localhost:5000/400x200.jpeg" />
-               </a>
-             </div>
-           </Slider>
+        <Slider {...settings}>
+          <div>
+            <a href="https://www.google.com/search?q=1&tbm=isch">
+              <img src="http://localhost:5000/400x200.jpeg" />
+            </a>
+          </div>
+          <div>
+            <a href="https://www.google.com/search?q=2&tbm=isch">
+              <img src="http://localhost:5000/400x200.jpeg" />
+            </a>
+          </div>
+          <div>
+            <a href="https://www.google.com/search?q=3&tbm=isch">
+              <img src="http://localhost:5000/400x200.jpeg" />
+            </a>
+          </div>
+          <div>
+            <a href="https://www.google.com/search?q=4&tbm=isch">
+              <img src="http://localhost:5000/400x200.jpeg" />
+            </a>
+          </div>
+        </Slider>
          </div>
        </div>
     );
