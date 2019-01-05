@@ -7,17 +7,20 @@ export default class App extends Component {
   render() {
     var settings = {
       dots: false,
-      infinite: false,
+      infinite: true,
+      arrows: true,
       speed: 500,
       slidesToShow: 4,
       slidesToScroll: 4,
       initialSlide: 0,
+      // centerMode: true,
       responsive: [
         {
           breakpoint: 1500,
           settings: {
             slidesToShow: 3,
             slidesToScroll: 3,
+            arrows: true,
             infinite: true,
             dots: false
           }
@@ -28,6 +31,7 @@ export default class App extends Component {
             slidesToShow: 2,
             slidesToScroll: 2,
             initialSlide: 2,
+            infinite: true,
             dots: false
           }
         },
@@ -36,6 +40,7 @@ export default class App extends Component {
           settings: {
             slidesToShow: 1,
             slidesToScroll: 1,
+            infinite: true,
             dots: false
           }
         }
