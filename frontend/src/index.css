@@ -1,7 +1,7 @@
 .container {
   margin: 0 auto;
   padding: 0px;
-  width: 95%;
+  width: 100%;
   color: #333;
   /* background: #D3D3D3; */
 }
@@ -99,11 +99,14 @@ h3 {
   background-color: grey;
 }
 
-/* .slick-prev {
+/* Arrows CSS */
+.slick-prev {
   z-index: 100;
-  left: 20px !important;
+  /* left: 20px !important; */
+  left: 0;
 }
 .slick-next {
   z-index: 100;
-  right: 20px !important;
-} */
+  /* right: 20px !important; */
+  right: 0
+}
