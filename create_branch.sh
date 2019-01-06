@@ -50,6 +50,15 @@ else
   app_dir=${4}
 fi
 
+# Rewrite git URL, basically use another repository instead of Github
+if ! echo "${5}" | grep -q ^$
+then
+  echo "Rewriting git URL so github will not be used ... continue in 5 seconds"
+  sleep 5
+  git_url="${5}"
+  echo "Your git url is ${git_url}"
+fi
+
 # Initialize rails port
 rails_port=`echo ${sub_domain} | sha1sum | tr -dc '0-9' | cut -c1-4 | sed -e "s/^/3/g"`
 
@@ -76,7 +85,14 @@ cd ${app_dir}
 git init
 git checkout -b ${sub_domain}
 git remote remove origin 2>/dev/null
-git remote add origin git@github.com:${git_user}/${git_repo}.git
+
+if echo "$git_url" | grep ^$
+then
+  git remote add origin git@github.com:${git_user}/${git_repo}.git
+else
+  git remote add origin "$git_url"
+fi
+
 git add --all
 git commit -m "initial app"
 git push origin ${sub_domain}
