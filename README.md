@@ -1,66 +1,121 @@
-# React and Rails Initial App
+# React-Rails
 
-With this you can create initial React and Rails application automatically. It also can take care of Apache virtual host and branch creation if you desired. All these scripts should be executed in the right order and likely should be amended based on your environment and your needs. Please follow the documenation to understand the steps.
+## Preparing Your Workstation
 
-### Requirements
+### Mac OS
 
-This works only on Centos or RHEL. You need to execute this once on particular box.
+This tutorial assumes that you do not have any knowledge so if you are familiar with these tools, you can skip majority of parts
 
-### Install dependencies on Centos
+#### Will be added more steps
 
-This installs node, npx, ruby and rails.
+...
 
-`./install_dependencies.sh`
+### Windows
 
-### Understand the Usage
+This tutorial assumes that you do not have any knowledge so if you are familiar with these tools, you can skip majority of parts
 
-You will see this example in the next sections
+#### Install any editor, e.g. Atom [https://atom.io](https://atom.io)
 
-By 'app', I mean this is your app username
+* Do not show welcome guide if you desired
 
-By 'laimison', I mean this is your GitHub username
+* Probably no for telemetry if asked
 
-By 'react-rails', I mean this is your GitHub repository name for the app. So in this case origin will be 'git@github.com:laimison/react-rails.git'
+#### Open project in Atom
 
-By '/var/www/html/subdomain.example.com', I mean your app location. Only subdomain is allowed, it cannot be the name which is not domain and just 'example.com'
+* File - add project folder - Document/react-rails
 
-### Create an App
+OR
 
-This creates sample React and Rails app.
+* `cd; cd Documents/react-rails; atom .` in Git Bash
 
-`./create_app.sh app laimison react-rails /var/www/html/subdomain.example.com`
+#### Will be added more steps
 
-You can specify any random git user and repo if you don't need anything else what is above
+...
 
-### Create Apache Virtual Host
+#### Install Git Bash [https://git-scm.com/download/win](https://git-scm.com/download/win)
 
-This creates a new Apache config in '/etc/httpd/conf.d'.
+* During installation choose nano editor if you need a simple one
 
-`./create_virtual_host.sh app laimison react-rails /var/www/html/subdomain.example.com`
+* Choose git from the command line and also from 3rd-party software
 
-### Chown
+* Use OpenSSH
 
-This chowns app files from root:root to app:root
+* Check OpenSSL
 
-`./chown.sh app laimison react-rails /var/www/html/subdomain.example.com`
+* Yes for checkout Windows-style, commit Unix-style line endings
 
-### Create Crontab rules
+* Use MinTTY
 
-This creates crontab rules.
+* Enable file system caching
 
-`./create_crontab_rules.sh app laimison react-rails /var/www/html/subdomain.example.com`
+* Enable Git Credential Manager
 
-### Create a Branch
+* Enable symbolic links
 
-This creates a branch.
+### GIT Basics
 
-`./create_branch.sh app laimison react-rails /var/www/html/subdomain.example.com`
+#### Clone GIT project
 
-### Delete the App
+* You need github account for this
 
-If you want to delete some parts, this is manual step.
+* Open Git Bash
 
-If you want to delete everything automatically (delete virtual host from Apache, your branch, Crontab rule and app directory), use the script below:
+* `cd; cd Documents`
 
-`./delete_app.sh app laimison react-rails /var/www/html/subdomain.example.com`
+* `git clone https://github.com/laimison/react-rails.git`
 
+* `cd react-rails`
+
+* `git checkout part1`
+
+#### Reset any changes in your local GIT
+
+* `cd; cd Documents/react-rails`
+
+* `git reset --hard origin/part1`
+
+* `git fetch --all`
+
+#### Commit Your Changes to GIT
+
+If you want to write some changes to this repository, you should be added as collaborator for this project
+
+Option 1) ideally ask owner to give the access
+
+Option 2) fork this repo
+
+`partX` - can be any part that you want to change
+
+* Open another window of Git Bash
+
+* `cd`
+
+* `cd Documents/react-rails`
+
+* `git config user.name "Your Name or nickname"` - this name will be visible to the world.. surname is not required..
+
+* `git config user.email "your_github_email_address@example.com"` - it's not visible to anyone
+
+* `git checkout partX`
+
+* Now you can try to edit some code and push them to git!
+
+* `git status`
+
+* `git add --all`
+
+* `git commit -m 'add some message what you have changed'` - this is visible to the world
+
+* `git push origin partX` - it will ask for your Github username and password
+
+#### GIT Commit in One Line (Optional)
+
+Type this in Git Bash
+
+``cd; grep -qE 'git_push.*().*{' ~/.bash_profile || echo 'git_push () { git status && echo && echo $* | grep [a-zA-Z] && echo "Pushing as `git config user.name` in 5 seconds (CTRL+C to decline) ..." && sleep 5 && git config --global push.default current && git add --all && git commit -m "$*" && git push ; }' >> .bashrc``
+
+Reopen your Git Bash window
+
+You should be in react-rails directory
+
+`git_push your "commit message here"`
