@@ -1,34 +1,18 @@
 # React-Rails
 
-## Preparing Your Workstation
-
-### Mac OS
+## Preparing Mac OS Workstation
 
 This tutorial assumes that you do not have any knowledge so if you are familiar with these tools, you can skip majority of parts
 
-#### Will be added more steps
+### Will Add More Steps
 
 ...
 
-### Windows
+## Preparing Windows Workstation
 
 This tutorial assumes that you do not have any knowledge so if you are familiar with these tools, you can skip majority of parts
 
-#### Install any editor, e.g. Atom [https://atom.io](https://atom.io)
-
-* Do not show welcome guide if you desired
-
-* Probably no for telemetry if asked
-
-#### Open project in Atom
-
-* File - add project folder - Document/react-rails
-
-OR
-
-* `cd; cd Documents/react-rails; atom .` in Git Bash
-
-#### Will be added more steps
+#### Will Add More Steps
 
 ...
 
@@ -52,9 +36,23 @@ OR
 
 * Enable symbolic links
 
-### GIT Basics
+### Install any editor, e.g. Atom [https://atom.io](https://atom.io)
 
-#### Clone GIT project
+* Do not show welcome guide if you desired
+
+* Probably no for telemetry if asked
+
+### Open project in Atom
+
+* File - add project folder - Document/react-rails
+
+OR
+
+* `cd; cd Documents/react-rails; atom .` in Git Bash
+
+## GIT Basics
+
+### Clone GIT project
 
 * You need github account for this
 
@@ -68,7 +66,7 @@ OR
 
 * `git checkout part1`
 
-#### Reset any changes in your local GIT
+### Reset any changes in your local GIT
 
 * `cd; cd Documents/react-rails`
 
@@ -76,7 +74,7 @@ OR
 
 * `git fetch --all`
 
-#### Commit Your Changes to GIT
+### Commit Your Changes to GIT
 
 If you want to write some changes to this repository, you should be added as collaborator for this project
 
@@ -108,7 +106,7 @@ Option 2) fork this repo
 
 * `git push origin partX` - it will ask for your Github username and password
 
-#### GIT Commit in One Line (Optional)
+### GIT Commit in One Line (Optional)
 
 Type this in Git Bash
 
