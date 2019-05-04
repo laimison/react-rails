@@ -21,15 +21,11 @@ module Api::V1
       output = { example_post: params }
       logger.info("I have received POST: #{output}")
 
-      if params['email'].present? && params['message'].present? && ENV['EMAIL_ADDRESS'].present?
-        message = "#{params['message']}\n\nSent by #{params['email']}"
-        email_from = "Mailer <#{ENV['EMAIL_ADDRESS']}>"
-        email_to = params['email'].to_s
+      message = "#{params['message']}\n\nSent by #{params['email']}"
+      email_from = "Mailer <example@example.com>"
+      email_to = params['email'].to_s
 
-        ActionMailer::Base.mail( from: email_from, to: email_to, subject: "Backend Email", body: message ).deliver_now
-      else
-        logger.warn("Email was not sent. This is possible issue with the app. ENV['EMAIL_ADDRESS'] is #{ENV['EMAIL_ADDRESS']}")
-      end
+      ActionMailer::Base.mail( from: email_from, to: email_to, subject: "Backend Email", body: message ).deliver_now
 
       render json: output
     end
