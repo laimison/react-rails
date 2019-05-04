@@ -1,0 +1,44 @@
+FROM ruby:2.4.6-stretch
+
+EXPOSE 1025 8025 3000 4000
+WORKDIR /data
+
+###################################### INSTALL DEPENDENCIES ##################################
+RUN gem install rails -v 5.1.6
+RUN gem install rails -v 5.1.6.1
+RUN apt update
+RUN curl -sL https://deb.nodesource.com/setup_10.x -o nodesource_setup.sh && bash nodesource_setup.sh && rm -f nodesource_setup.sh
+RUN apt install -y nodejs build-essential nginx netcat lsof vim
+RUN npm install -g npx
+
+########################################## CREATE DIRS #######################################
+RUN mkdir -p /data/frontend
+RUN mkdir -p /data/backend
+RUN mkdir -p /data/mailhog
+RUN ln -sf /var/www/html /data/nginx
+RUN rm -rf /var/www/html/*
+
+##################################### BUILD INITIAL APP ######################################
+RUN mkdir -p /root/initial/frontend
+RUN mkdir -p /root/initial/backend
+
+# Install Mailhog
+RUN cd /data/mailhog && wget https://github.com/mailhog/MailHog/releases/download/v1.0.0/MailHog_linux_amd64 && chmod +x MailHog_linux_amd64
+
+# Create React App - used only if there are no files in /data/frontend
+RUN cd /root/initial/frontend && ls package.json 2>/dev/null || npx create-react-app .
+
+# Create Rails App - used only if there are no files in /data/backend
+RUN cd /root/initial/backend && (ls Gemfile 2>/dev/null || printf "source 'https://rubygems.org\ngem 'rails', '~> 5.1.6.1'\n" > Gemfile) && rails new . --api --force && rails db:migrate
+
+# Add Mailhog to Rails configuration - used only if there are no files in /data/backend
+RUN cd /root/initial/backend && ls config/environments/development.rb 2>/dev/null && grep -q config.action_mailer.smtp_settings config/environments/development.rb || sed -i '/^end/i\\n\ \ config.action_mailer.perform_deliveries = true\n\ \ config.action_mailer.smtp_settings = {\n\ \ \ \ address: "localhost",\n\ \ \ \ port: 1025\n\ \ }' config/environments/development.rb
+
+# Configure Nginx
+RUN ln -sf /dev/stdout /var/log/nginx/access.log && ln -sf /dev/stderr /var/log/nginx/error.log
+
+###################################### JUST NOTES IN THE SHELL #################################
+RUN echo 'gem list ^rails$' >> /root/.bashrc
+
+#################################### KEEP CONTAINER RUNNING ####################################
+CMD tail -F /dev/null
