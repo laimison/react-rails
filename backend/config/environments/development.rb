@@ -45,24 +45,10 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   # ---- Extra code for mailer
-  email_address = ENV['EMAIL_ADDRESS']
-  email_password = ENV['EMAIL_PASSWORD']
-
-  if email_address.present? && email_password.present?
-    email_password_decoded = Base64.decode64(email_password)
-
-    config.action_mailer.delivery_method = :smtp
-    config.action_mailer.smtp_settings = {
-      address:              'smtp.gmail.com',
-      port:                 587,
-      domain:               'gmail.com',
-      user_name:            email_address.strip,
-      password:             email_password_decoded,
-      authentication:       :login,
-      enable_starttls_auto: true
-    }
-  else
-    puts "Warning: You have not specified 'export EMAIL_ADDRESS' and 'export EMAIL_PASSWORD' environment variables for backend mailer so emails will not work"
-  end
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.smtp_settings = {
+      address:              'localhost',
+      port:                 1025
+  }
   # ---- Extra code ends.
 end
