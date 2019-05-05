@@ -22,28 +22,28 @@ export default class App extends Component {
 
     const images = [
       {
-        original: 'http://localhost:5000/1000x600.jpeg',
-        thumbnail: 'http://localhost:5000/250x150.jpeg',
+        original: 'http://localhost:4000/1000x600.jpeg',
+        thumbnail: 'http://localhost:4000/250x150.jpeg',
       },
       {
-        original: 'http://localhost:5000/1000x600.jpeg',
-        thumbnail: 'http://localhost:5000/250x150.jpeg',
+        original: 'http://localhost:4000/1000x600.jpeg',
+        thumbnail: 'http://localhost:4000/250x150.jpeg',
       },
       {
-        original: 'http://localhost:5000/1000x600.jpeg',
-        thumbnail: 'http://localhost:5000/250x150.jpeg',
+        original: 'http://localhost:4000/1000x600.jpeg',
+        thumbnail: 'http://localhost:4000/250x150.jpeg',
       },
       {
-        original: 'http://localhost:5000/1000x600.jpeg',
-        thumbnail: 'http://localhost:5000/250x150.jpeg',
+        original: 'http://localhost:4000/1000x600.jpeg',
+        thumbnail: 'http://localhost:4000/250x150.jpeg',
       },
       {
-        original: 'http://localhost:5000/1000x600.jpeg',
-        thumbnail: 'http://localhost:5000/250x150.jpeg',
+        original: 'http://localhost:4000/1000x600.jpeg',
+        thumbnail: 'http://localhost:4000/250x150.jpeg',
       },
       {
-        original: 'http://localhost:5000/1000x600.jpeg',
-        thumbnail: 'http://localhost:5000/250x150.jpeg',
+        original: 'http://localhost:4000/1000x600.jpeg',
+        thumbnail: 'http://localhost:4000/250x150.jpeg',
       }
     ]
     return (
