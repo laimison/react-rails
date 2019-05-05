@@ -1,6 +1,6 @@
 version: '3.5'
 
-# docker-compose build && docker-compose down && docker-compose up -d && docker-compose ps && docker logs -f part
+# docker-compose build && docker-compose down && docker-compose up
 # http://localhost:3000 - React
 # http://localhost:4000 - Rails
 # http://localhost:8025 - Mailhog
