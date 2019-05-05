@@ -8,10 +8,9 @@ ls /data/backend/Gemfile 2>/dev/null || mv /root/initial/backend/{.,}* /data/bac
 # Mailhog
 cd /data/mailhog && ./MailHog_linux_amd64 &
 
-# React
-cd /data/frontend && npm install && npm start &
-
 # Rails
-cd /data/backend && bundle install && rails s -p 4000 -b 0.0.0.0 &
+/bin/rm -f /data/backend/tmp/pids/server.pid
+(cd /data/backend && rails s -p 4000 -b 0.0.0.0 || bundle install && rails s -p 4000 -b 0.0.0.0) &
 
-tail -F /dev/null
+# React
+(cd /data/frontend && npm start || npm install && npm start)
