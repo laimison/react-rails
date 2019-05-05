@@ -1,0 +1,28 @@
+version: '3.5'
+
+# docker-compose build && docker-compose down && docker-compose up; docker-compose down
+# http://localhost:3000 - React
+# http://localhost:4000 - Rails
+# http://localhost:8025 - Mailhog
+
+services:
+  part:
+    container_name: part
+    hostname: part
+    build:
+      context: .
+      dockerfile: Dockerfile-react-rails-development
+    restart: always
+    command: >
+      bash -c "chmod +x /data/docker-entrypoint.sh
+      && /data/docker-entrypoint.sh"
+    user: root
+    ports:
+      - 3000:3000
+      - 4000:4000
+      - 8025:8025
+    working_dir: /data
+    volumes:
+      - ./frontend:/data/frontend
+      - ./backend:/data/backend
+      - ./docker-entrypoint.sh:/data/docker-entrypoint.sh
